@@ -7,7 +7,50 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=border_color" />
   </head>
- <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <h1 class="text-3xl font-bold underline">
-   
-    </h1>
+ <body class="">
+   <nav class="w-full flex items-center gap-4 px-4 py-2 shadow-sm bg-white">
+
+  <!-- Logo -->
+  <div class="flex items-center gap-2">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" class="w-7" />
+    <span class="font-semibold text-xl">Pinterest</span>
+  </div>
+
+  <!-- Menu Buttons -->
+  <div class="flex items-center gap-2">
+    <button class="px-4 py-2 bg-black text-white rounded-full font-medium">
+      Home
+    </button>
+
+    <button class="px-4 py-2 hover:bg-gray-200 rounded-full font-medium">
+      Explore
+    </button>
+
+    <button class="px-4 py-2 hover:bg-gray-200 rounded-full font-medium">
+      Create
+    </button>
+  </div>
+
+  <!-- Search Bar -->
+  
+
+  <!-- Right Icons -->
+  <div class="flex items-center gap-4 ml-auto">
+    <span class="material-icons cursor-pointer text-gray-600 hover:text-black">notifications</span>
+    <span class="material-icons cursor-pointer text-gray-600 hover:text-black">sms</span>
+    <span class="material-icons cursor-pointer text-gray-600 hover:text-black">account_circle</span>
+  </div>
+  <!-- Logout Button -->
+    <form action="/user/logout" method="POST">
+      <button 
+        class="px-4 py-2 border rounded-full hover:bg-gray-100 font-medium"
+        type="submit">
+        Logout
+      </button>
+    </form>
+
+</nav>
+
+<!-- Google Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+

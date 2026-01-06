@@ -21,7 +21,7 @@ app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 
 app.use('/user',userRouter);
-app.use('/page',pagesRouter);
+app.use('/pages',pagesRouter);
 
 app.get('/',(req,res)=>{
     res.render('./auth/login');

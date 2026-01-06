@@ -49,9 +49,7 @@ router.post('/register',async(req,res)=>{
 
         await newUser.save();
         
-        res.status(201).json({
-            message:"user Registered Succesfully"
-        });
+        res.redirect('/pages/login');
 
 
     }
@@ -97,7 +95,7 @@ router.post('/login',async(req,res)=>{
 
         res.cookie("Token",token);
        
-        res.render('./pages/profile')
+        res.render('./pages/profile',{user});
     }
     catch(error){
         console.log("error",error);
@@ -106,6 +104,11 @@ router.post('/login',async(req,res)=>{
             error:error.message
         });
     }
+})
+
+router.post('/logout',(req,res)=>{
+    res.clearCookie("token");
+    res.redirect('/');
 })
 
 
