@@ -1,0 +1,61 @@
+<%- include('../partials/header') %>
+
+<div class="bg-white w-full max-w-md rounded-2xl shadow-xl p-8">
+    
+    <!-- Logo -->
+    <div class="flex justify-center mb-4">
+      <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+        P
+      </div>
+    </div>
+
+    <h2 class="text-center text-2xl font-semibold mb-6">
+      Welcome to Pinterest
+    </h2>
+
+    <!-- Form -->
+    <form class="space-y-4"  method="POST" action="/user/login">
+      <div>
+        <label class="text-sm font-medium">name</label>
+        <input 
+          type="name" 
+          name="name"
+          class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+          placeholder="Enter your name" />
+      </div>
+
+      <div>
+        <label class="text-sm font-medium">Password</label>
+        <input 
+          type="password" 
+          name="password"
+          class="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+          placeholder="Enter your password" />
+      </div>
+
+      <button 
+        class="w-full bg-red-600 text-white py-2 rounded-lg font-semibold hover:bg-red-700 transition">
+        Log in
+      </button>
+    </form>
+
+    <!-- OR Divider -->
+    
+
+    <!-- Social Login -->
+    <div class="space-y-3 mt-5">
+      <button class="w-full border py-2 rounded-lg flex justify-center items-center gap-2 hover:bg-gray-50">
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" />
+        Continue with Google
+      </button>
+
+     <p class="text-center">Facebook login is no longer available</p>
+    </div>
+
+    <!-- Footer -->
+    <p class="text-center text-sm text-gray-600 mt-6">
+      Not on Pinterest yet?
+      <a href="#" class="text-red-600 font-semibold hover:underline">Sign up</a>
+    </p>
+  </div>
+<%- include('../partials/footer') %>
