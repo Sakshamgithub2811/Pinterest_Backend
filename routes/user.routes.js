@@ -49,7 +49,7 @@ router.post('/register',async(req,res)=>{
 
         await newUser.save();
         
-        res.redirect('/pages/login');
+        res.redirect('/');
 
 
     }
@@ -91,7 +91,8 @@ router.post('/login',async(req,res)=>{
             userId:user._id,
             email:user.email,
             name:user.name
-        },process.env.JWT_SECRET);
+        },process.env.JWT_SECRET,
+      { expiresIn: "1d" }  );
 
         res.cookie("Token",token);
        

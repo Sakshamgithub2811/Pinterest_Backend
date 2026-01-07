@@ -3,6 +3,7 @@ const router = express.Router();
 const upload = require('../config/multer');
 const auth = require('../middleware/auth.middleware');
 const userModel = require('../models/user.model');
+const postModel = require('../models/post.model');
 
 router.get('/test',(req,res)=>{
     res.send('This is a test route for userModel routes');
@@ -10,7 +11,7 @@ router.get('/test',(req,res)=>{
 
 router.get('/profile',auth, async(req,res)=>{
     console.log("profile");
-    const user = await userModel.findOne({name:req.user.name});
+    const user = await userModel.findOne({name:req.user.name}).populate("posts");
     console.log( "user",user);
     res.render('./pages/profile',{user});
 })
@@ -35,8 +36,8 @@ router.get('/add',auth, async(req,res)=>{
     res.render('./pages/add',{user});
 })
 
-router.post('/createPost',auth, async(req,res)=>{
-    const user = await userModel.findOne({name:req.userModel.name});
+router.post('/createPost',auth,upload.single("postImage"),async(req,res)=>{
+    const user = await userModel.findOne({name:req.user.name});
     const post = await postModel.create({
         user:user._id,
         title:req.body.title,
@@ -46,7 +47,19 @@ router.post('/createPost',auth, async(req,res)=>{
 
     user.posts.push(post._id);
     await user.save();
-    res.redirect("/profile");
-   
-})
+    res.redirect("./profile"); 
+});
+
+router.get("/allPins",auth,async(req,res)=>{
+    const user = await userModel.findOne({name:req.user.name}).populate('posts');
+    res.render('./pages/allPins',{user});
+});
+
+router.get("/feed",auth,async(req,res)=>{
+ const user = await userModel.findOne({name:req.user.name});
+ const posts = await postModel.find().populate("user");
+ console.log(posts);
+
+ res.render("./pages/feed",{user,posts});
+});
 module.exports = router;
